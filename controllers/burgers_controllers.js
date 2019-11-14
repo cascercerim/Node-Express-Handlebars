@@ -16,18 +16,18 @@ router.get('/index', function(req, res){
 	});
 });
 
-router.post('/burgers/create', function(req, res){
+router.post('/burger/create', function(req, res){
 	burger.create(['burger_name', 'devoured'], [req.body.name, false], function(){
 		res.redirect('/index')
 	});
 });
 
-router.put('/burgers/update/:id', function(req, res){
+router.put('/burger/update/:id', function(req, res){
 	var condition = 'id = ' + req.params.id;
 
 	console.log('condition ', condition);
 
-	burger.update({'devoured': req.body.devoured}, condition, function(){
+	burger.update({'devoured': req.body.devoured}, condition, function(data){
 		res.redirect('/index');
 	});
 });
