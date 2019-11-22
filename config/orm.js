@@ -1,5 +1,5 @@
 var connection = require('../config/connection.js');
-
+// generic library you can use to connect mysql to website and update 
 function printQuestionMarks(num) {
     var arr = [];
 
@@ -14,15 +14,15 @@ function objToSql(ob) {
     var arr = [];
 
     for (var key in ob) {
-                // value = '"' + value + '"';
-            arr.push(key + '=' + value);
-        };
-        return arr.toString();
+        // value = '"' + value + '"';
+        arr.push(key + '=' + value);
     };
+    return arr.toString();
+};
 var orm = {
     all: function (tableInput, cb) {
         var queryString = 'SELECT * FROM ' + tableInput;
-        
+
         connection.query(queryString, function (err, result) {
             // if (err) throw err;
             cb(result);
